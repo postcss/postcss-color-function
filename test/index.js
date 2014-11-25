@@ -26,7 +26,9 @@ test("color()", function(t) {
 test("throw errors", function(t) {
   t.throws(function() {
     return postcss(plugin()).process(read(filename("fixtures/error"))).css
-  }, /Unable to parse color from string/, "throws a readable error when a color can't be parsed")
+  },
+  /Unable to parse color from string/,
+  "throws a readable error when a color can't be parsed")
 
   t.end()
 })
