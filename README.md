@@ -1,10 +1,10 @@
-# postcss-color-function [![Build Status](https://travis-ci.org/postcss/postcss-color-function.png)](https://travis-ci.org/postcss/postcss-color-function)
+# postcss-color-function [![Build Status](https://travis-ci.org/postcss/postcss-color-function.svg)](https://travis-ci.org/postcss/postcss-color-function)
 
-> [PostCSS](https://github.com/postcss/postcss) plugin to transform [W3C CSS color function](http://dev.w3.org/csswg/css-color/#modifying-colors) to more compatible CSS.
+> [PostCSS](https://github.com/postcss/postcss) plugin to transform [W3C CSS color function][specs] to more compatible CSS.
 
 ## Installation
 
-```bash
+```console
 $ npm install postcss-color-function
 ```
 
@@ -43,7 +43,51 @@ body {
 }
 ```
 
-Checkout [tests](test) for more examples.
+Checkout [tests](test) for examples.
+
+## Interface (according to CSS specs)
+
+```
+color( [ <color> | <hue> ] <color-adjuster>* )
+```
+
+### List of `color-adjuster`
+
+- `[red( | green( | blue( | alpha( | a(] ['+' | '-']? [<number> | <percentage>] )`
+- `[red( | green( | blue( | alpha( | a(] '*' <percentage> )`
+- ~~`rgb( ['+' | '-'] [<number> | <percentage>]{3} )`~~ @todo
+- ~~`rgb( ['+' | '-'] <hash-token> )`~~ @todo
+- ~~`rgb( '*' <percentage> ) |`~~ @todo
+- `[hue( | h(] ['+' | '-' | '*']? <angle> )`
+- `[saturation( | s(] ['+' | '-' | '*']? <percentage> )`
+- `[lightness( | l(] ['+' | '-' | '*']? <percentage> )`
+- `[whiteness( | w(] ['+' | '-' | '*']? <percentage> )`
+- `[blackness( | b(] ['+' | '-' | '*']? <percentage> )`
+- `tint( <percentage> )`
+- `shade( <percentage> )`
+- `blend( <color> <percentage> [rgb | hsl | hwb]? )`
+- ~~`blenda( <color> <percentage> [rgb | hsl | hwb]? )`~~ @todo
+- ~~`contrast( <percentage>? )`~~ @todo
+
+Notes:
+
+- some adjusts have shortcuts,
+- can be used on every value on any property,
+- some values can use add/subtract/scale modifiers or a direct value.
+
+[Read the specs][specs] for more information.
+
+### Examples
+
+```css
+whatever {
+  color: color(red a(10%);
+  
+  background-color: color(red lightness(50%)); /* == color(red l(50%)); */
+  
+  border-color: color(hsla(125, 50%, 50%, .4) saturation(+ 10%) w(- 20%));
+}
+```
 
 ---
 
@@ -51,11 +95,15 @@ Checkout [tests](test) for more examples.
 
 Work on a branch, install dev-dependencies, respect coding style & run tests before submitting a bug fix or a feature.
 
-    $ git clone https://github.com/postcss/postcss-color-function.git
-    $ git checkout -b patch-1
-    $ npm install
-    $ npm test
+```console
+$ git clone https://github.com/postcss/postcss-color-function.git
+$ git checkout -b patch-1
+$ npm install
+$ npm test
+```
 
 ## [Changelog](CHANGELOG.md)
 
 ## [License](LICENSE)
+
+[specs]: (http://dev.w3.org/csswg/css-color/#modifying-colors)
