@@ -89,6 +89,12 @@ whatever {
 }
 ```
 
+## FAQ
+
+### Can you support `currentcolor` so we can do `color(currentcolor adjuster())`?
+
+No we cannot do that. `currentcolor` depends on the cascade (so the DOM) and we can't handle that in a simple preprocessing step. You need to handle that with polyfills.
+
 ---
 
 ## Contributing
