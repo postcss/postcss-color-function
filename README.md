@@ -67,7 +67,7 @@ color( [ <color> | <hue> ] <color-adjuster>* )
 - `shade( <percentage> )`
 - `blend( <color> <percentage> [rgb | hsl | hwb]? )`
 - ~~`blenda( <color> <percentage> [rgb | hsl | hwb]? )`~~ @todo
-- ~~`contrast( <percentage>? )`~~ @todo
+- `contrast( <percentage>? )`
 
 Notes:
 
