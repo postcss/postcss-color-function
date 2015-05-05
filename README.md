@@ -81,7 +81,7 @@ Notes:
 
 ```css
 whatever {
-  color: color(red a(10%);
+  color: color(red a(10%));
   
   background-color: color(red lightness(50%)); /* == color(red l(50%)); */
   
