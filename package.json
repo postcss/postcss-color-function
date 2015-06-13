@@ -5,7 +5,7 @@
   "keywords": [
     "css",
     "postcss",
-    "postcss-plugins",
+    "postcss-plugin",
     "color",
     "colour",
     "function"
@@ -24,12 +24,12 @@
   "dependencies": {
     "balanced-match": "^0.1.0",
     "css-color-function": "^1.2.0",
+    "postcss": "^4.1.11",
     "postcss-message-helpers": "^1.1.0"
   },
   "devDependencies": {
     "jscs": "^1.6.2",
     "jshint": "^2.5.6",
-    "postcss": "^4.0.2",
     "tape": "^3.0.0"
   },
   "scripts": {

@@ -1,3 +1,7 @@
+# 1.3.0 - 2015-06-13
+
+- Changed: upgrade to PostCSS 4.1.x
+
 # 1.2.0 - 2015-03-12
 
 - Added: contrast() adjuster
