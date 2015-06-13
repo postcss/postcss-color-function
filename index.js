@@ -1,6 +1,7 @@
 /**
  * Module dependencies.
  */
+var postcss = require("postcss")
 var balanced = require("balanced-match")
 var colorFn = require("css-color-function")
 var helpers = require("postcss-message-helpers")
@@ -8,7 +9,7 @@ var helpers = require("postcss-message-helpers")
 /**
  * PostCSS plugin to transform color()
  */
-module.exports = function plugin() {
+module.exports = postcss.plugin("postcss-color-function", function() {
   return function(style) {
     style.eachDecl(function transformDecl(decl) {
       if (!decl.value || decl.value.indexOf("color(") === -1) {
@@ -20,7 +21,7 @@ module.exports = function plugin() {
       }, decl.source)
     })
   }
-}
+})
 
 /**
  * Transform color() to rgb()
