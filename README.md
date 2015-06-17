@@ -2,6 +2,8 @@
 
 > [PostCSS](https://github.com/postcss/postcss) plugin to transform [W3C CSS color function][specs] to more compatible CSS.
 
+http://dev.w3.org/csswg/css-color/#modifying-colors
+
 ## Installation
 
 ```console
