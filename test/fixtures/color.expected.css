@@ -3,4 +3,8 @@ body {
   background-color: rgb(255, 128, 128);
   border-color: rgba(64, 149, 191, 0.4);
   border-top-color: rgb(248, 240, 255);
+
+  border-bottom-color: hover-color(red);
+
+  border-right-color: hover-color(rgb(255, 128, 128));
 }
