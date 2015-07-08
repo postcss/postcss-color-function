@@ -30,10 +30,15 @@ module.exports = postcss.plugin("postcss-color-function", function() {
  * @return {String}        converted declaration value to rgba()
  */
 function transformColor(string, source) {
-  var index = string.indexOf("color(")
-  if (index == -1) {
+  var index = string.search(/(^|[^\w\-])color\(/)
+
+  if (index === -1) {
     return string
   }
+
+  // NOTE: regexp search beginning of line of non char symbol before `color(`.
+  //       Offset used for second case.
+  index = index === 0 ? index : index + 1
 
   var fn = string.slice(index)
   var balancedMatches = balanced("(", ")", fn)
