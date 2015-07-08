@@ -2,8 +2,6 @@
 
 > [PostCSS](https://github.com/postcss/postcss) plugin to transform [W3C CSS color function][specs] to more compatible CSS.
 
-http://dev.w3.org/csswg/css-color/#modifying-colors
-
 ## Installation
 
 ```console
@@ -84,9 +82,9 @@ Notes:
 ```css
 whatever {
   color: color(red a(10%));
-  
+
   background-color: color(red lightness(50%)); /* == color(red l(50%)); */
-  
+
   border-color: color(hsla(125, 50%, 50%, .4) saturation(+ 10%) w(- 20%));
 }
 ```
@@ -100,20 +98,9 @@ No we cannot do that. `currentcolor` depends on the cascade (so the DOM) and we 
 ### Can we use CSS custom properties so we can do `color(var(--mainColor) adjuster())`?
 
 By using [postcss-custom-properties](https://github.com/postcss/postcss-custom-properties) before this plugin, you can do that (sort of).
-You have some examples in [cssnext playground](http://cssnext.github.io/cssnext-playground/).
+You have some examples in [cssnext playground](http://cssnext.io/playground/).
 
 ---
-
-## Contributing
-
-Work on a branch, install dev-dependencies, respect coding style & run tests before submitting a bug fix or a feature.
-
-```console
-$ git clone https://github.com/postcss/postcss-color-function.git
-$ git checkout -b patch-1
-$ npm install
-$ npm test
-```
 
 ## [Changelog](CHANGELOG.md)
 

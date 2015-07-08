@@ -1,3 +1,9 @@
+# 1.3.1 - 2015-07-08
+
+- Fixed: the plugin now do now transform all functions that match `*color(` but
+only the one that are real color function call
+([#12](https://github.com/postcss/postcss-color-function/pull/12))
+
 # 1.3.0 - 2015-06-13
 
 - Changed: upgrade to PostCSS 4.1.x
