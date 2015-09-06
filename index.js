@@ -11,7 +11,7 @@ var helpers = require("postcss-message-helpers")
  */
 module.exports = postcss.plugin("postcss-color-function", function() {
   return function(style) {
-    style.eachDecl(function transformDecl(decl) {
+    style.walkDecls(function transformDecl(decl) {
       if (!decl.value || decl.value.indexOf("color(") === -1) {
         return
       }
