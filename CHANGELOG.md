@@ -1,3 +1,10 @@
+# 2.0.0 - 2015-09-07
+
+- Removed: compatibility with postcss v4.x
+([#14](https://github.com/postcss/postcss-color-function/pull/14))
+- Added: compatibility with postcss v5.x
+([#14](https://github.com/postcss/postcss-color-function/pull/14))
+
 # 1.3.2 - 2015-07-08
 
 - Fixed: the plugin now do now transform all functions that match `*color(` but
