@@ -106,4 +106,4 @@ You have some examples in [cssnext playground](http://cssnext.io/playground/).
 
 ## [License](LICENSE)
 
-[specs]: (http://dev.w3.org/csswg/css-color/#modifying-colors)
+[specs]: http://dev.w3.org/csswg/css-color/#modifying-colors
