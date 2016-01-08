@@ -8,3 +8,8 @@ body {
 
   border-right-color: hover-color(color(red tint(50%)));
 }
+
+.hue {
+  border-color: color(hsla(0, 100%, 50%, .4) hue(- 120));
+  border-left-color: color(blue hue(+ 120));
+}

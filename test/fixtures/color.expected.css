@@ -8,3 +8,8 @@ body {
 
   border-right-color: hover-color(rgb(255, 128, 128));
 }
+
+.hue {
+  border-color: rgba(0, 0, 255, 0.4);
+  border-left-color: rgb(255, 0, 0);
+}
