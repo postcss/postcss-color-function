@@ -7,4 +7,6 @@ body {
   border-bottom-color: hover-color(red);
 
   border-right-color: hover-color(color(red tint(50%)));
+
+  border-color: color(#999 a(0.8)) color(#999 a(0.8));
 }

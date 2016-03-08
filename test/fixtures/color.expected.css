@@ -7,4 +7,6 @@ body {
   border-bottom-color: hover-color(red);
 
   border-right-color: hover-color(rgb(255, 128, 128));
+
+  border-color: rgba(153, 153, 153, 0.8) rgba(153, 153, 153, 0.8);
 }
