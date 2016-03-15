@@ -1,3 +1,8 @@
+# 2.0.1 - 2016-03-15
+
+- Fixed: whitespace are retained between color() usage.
+  ([#27](https://github.com/postcss/postcss-color-function/pull/27))
+
 # 2.0.0 - 2015-09-07
 
 - Removed: compatibility with postcss v4.x
