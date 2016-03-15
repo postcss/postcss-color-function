@@ -20,10 +20,10 @@
     "index.js"
   ],
   "dependencies": {
-    "balanced-match": "^0.1.0",
     "css-color-function": "^1.2.0",
     "postcss": "^5.0.4",
-    "postcss-message-helpers": "^2.0.0"
+    "postcss-message-helpers": "^2.0.0",
+    "postcss-value-parser": "^3.3.0"
   },
   "devDependencies": {
     "jscs": "^1.6.2",
