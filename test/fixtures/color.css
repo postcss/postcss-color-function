@@ -12,7 +12,7 @@ body {
 }
 
 .withAlpha {
-  color: color(black a(90%) contrast(99%));
+  color: color(black a(80%) contrast(99%));
   background-color: color(red a(50%) shade(50%));
   border-color: color(red a(80%) tint(50%));
 }
