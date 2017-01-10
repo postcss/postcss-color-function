@@ -10,3 +10,9 @@ body {
 
   border-color: rgba(153, 153, 153, 0.8) rgba(153, 153, 153, 0.8);
 }
+
+.withAlpha {
+  color: rgba(255, 255, 255, 0.9);
+  background-color: rgba(128, 0, 0, 0.5);
+  border-color: rgba(255, 128, 128, 0.8);
+}
