@@ -10,9 +10,22 @@ var helpers = require("postcss-message-helpers")
  * PostCSS plugin to transform color()
  */
 module.exports = postcss.plugin("postcss-color-function", function() {
-  return function(style) {
+  return function(style, result) {
     style.walkDecls(function transformDecl(decl) {
       if (!decl.value || decl.value.indexOf("color(") === -1) {
+        return
+      }
+
+      if (decl.value.indexOf("var(") !== -1) {
+        result.messages.push({
+          plugin: "postcss-color-function",
+          type: "skipped-color-function-with-custom-property",
+          word: decl.value,
+          message:
+            "Skipped color function with custom property `" +
+            decl.value +
+            "`"
+        })
         return
       }
 
