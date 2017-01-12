@@ -1,0 +1,8 @@
+body {
+  color: rgb(255, 0, 0);
+  color: color(var(--red));
+  color: rgb(255, 128, 128);
+  color: color(var(--red) tint(50%));
+  color: color(rgb(255, 0, 0) tint(var(--tintPercent)));
+  color: color(var(--red) tint(var(--tintPercent)));
+}
