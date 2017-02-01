@@ -29,9 +29,16 @@ module.exports = postcss.plugin("postcss-color-function", function() {
         return
       }
 
-      decl.value = helpers.try(function transformColorValue() {
-        return transformColor(decl.value)
-      }, decl.source)
+      try {
+        decl.value = helpers.try(function transformColorValue() {
+          return transformColor(decl.value)
+        }, decl.source)
+      } catch (error) {
+        decl.warn(result, error.message, {
+          word: decl.value,
+          index: decl.index,
+        })
+      }
     })
   }
 })
