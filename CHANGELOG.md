@@ -1,3 +1,10 @@
+# 3.0.0 - 2017-02-01
+
+- Changed: send postcss warning when color function cannot be parsed instead of throwing
+([#35](https://github.com/postcss/postcss-color-function/pull/35) - @drewbourne)
+- Changed: send a postcss message when color function contains a var()
+([#36](https://github.com/postcss/postcss-color-function/pull/36) - @drewbourne) 
+
 # 2.0.1 - 2016-03-15
 
 - Fixed: whitespace are retained between color() usage.
