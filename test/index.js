@@ -23,12 +23,31 @@ test("color()", function(t) {
   t.end()
 })
 
-test("throw errors", function(t) {
-  t.throws(function() {
-    return postcss(plugin()).process(read(filename("fixtures/error"))).css
-  },
-  /Unable to parse color from string/,
-  "throws a readable error when a color can't be parsed")
+test("logs warning when color() value cannot be parsed", function(t) {
+  postcss(plugin()).process(read(filename("fixtures/error")))
+    .then(function(result) {
+      var warnings = result.warnings();
+      t.equals(warnings.length, 1, "expected only 1 warning");
 
-  t.end()
+      var warning = warnings[0]
+      t.equals(
+        warning.plugin,
+        "postcss-color-function",
+        "expected `warning.plugin` to match this plugin's name"
+      )
+
+      t.equals(
+        warning.word,
+        "color(blurp a(+10%))",
+        "expected `warning.word` to match color() declaration"
+      )
+
+      t.equals(
+        warning.text,
+        "<css input>:2:3: Unable to parse color from string \"blurp\"",
+        "expected `warning.text` to contain a readable error when a color can't be parsed"
+      )
+
+      t.end()
+    })
 })
