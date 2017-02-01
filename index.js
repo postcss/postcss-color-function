@@ -16,6 +16,19 @@ module.exports = postcss.plugin("postcss-color-function", function() {
         return
       }
 
+      if (decl.value.indexOf("var(") !== -1) {
+        result.messages.push({
+          plugin: "postcss-color-function",
+          type: "skipped-color-function-with-custom-property",
+          word: decl.value,
+          message:
+            "Skipped color function with custom property `" +
+            decl.value +
+            "`"
+        })
+        return
+      }
+
       try {
         decl.value = helpers.try(function transformColorValue() {
           return transformColor(decl.value)

@@ -51,3 +51,49 @@ test("logs warning when color() value cannot be parsed", function(t) {
       t.end()
     })
 })
+
+test("logs message when color() contains var() custom property", function(t) {
+  postcss(plugin()).process(read(filename("fixtures/color-with-custom-properties")))
+    .then(function(result) {
+      const expectedWords = [
+        "color(var(--red))",
+        "color(var(--red) tint(50%))",
+        "color(var(--red) tint(var(--tintPercent)))",
+        "color(rgb(255, 0, 0) tint(var(--tintPercent)))"
+      ]
+
+      t.equal(
+        result.messages.length,
+        expectedWords.length,
+        "expected a message every time a color function is skipped"
+      )
+
+      result.messages.forEach(function(message, i) {
+        t.equal(
+          message.type,
+          "skipped-color-function-with-custom-property",
+          "expected `message.type` to indicate reason for message"
+        )
+
+        t.equal(
+          message.plugin,
+          "postcss-color-function",
+          "expected `message.plugin` to match this plugin's name"
+        )
+
+        t.equal(
+          message.word,
+          expectedWords[i],
+          "expected `message.word` to contain declaration value"
+        )
+
+        t.equal(
+          message.message,
+          "Skipped color function with custom property `" + expectedWords[i] + "`",
+          "expected `message.message` to contain reason for message"
+        )
+      })
+
+      t.end()
+    })
+})
