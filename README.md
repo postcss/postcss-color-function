@@ -100,6 +100,20 @@ No we cannot do that. `currentcolor` depends on the cascade (so the DOM) and we 
 By using [postcss-custom-properties](https://github.com/postcss/postcss-custom-properties) before this plugin, you can do that (sort of).
 You have some examples in [cssnext playground](http://cssnext.io/playground/).
 
+## Notes for former Sass users
+
+`lighten` and `darken` are Sass specific methods and not supported by native CSS specs. The same functionality can be achieved with the [tint and shade adjusters](https://drafts.csswg.org/css-color/#tint-shade-adjusters):
+
+```css
+$lighten(red, 20%)
+/*  is equivalent to */
+color(red tint(20%))
+
+$darken(red, 20%)
+/*  is equivalent to */
+color(red shade(20%))
+```
+
 ---
 
 ## [Changelog](CHANGELOG.md)
