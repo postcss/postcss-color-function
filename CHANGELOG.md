@@ -1,3 +1,8 @@
+# 4.0.0 - 2017-05-15
+
+- Added: compatibility with postcss v6.x
+- Updated dependencies
+
 # 3.0.0 - 2017-02-01
 
 - Changed: send postcss warning when color function cannot be parsed instead of throwing
