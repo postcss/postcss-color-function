@@ -24,7 +24,7 @@ module.exports = postcss.plugin("postcss-color-function", function() {
           message:
             "Skipped color function with custom property `" +
             decl.value +
-            "`"
+            "`",
         })
         return
       }
@@ -33,7 +33,8 @@ module.exports = postcss.plugin("postcss-color-function", function() {
         decl.value = helpers.try(function transformColorValue() {
           return transformColor(decl.value)
         }, decl.source)
-      } catch (error) {
+      }
+      catch (error) {
         decl.warn(result, error.message, {
           word: decl.value,
           index: decl.index,
