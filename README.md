@@ -1,4 +1,4 @@
-# postcss-color-function [![Build Status](https://travis-ci.org/postcss/postcss-color-function.svg)](https://travis-ci.org/postcss/postcss-color-function)
+# postcss-color-function [![CSS Standard Status](https://jonathantneal.github.io/css-db/badge/css-color-modifying-colors.svg)](https://jonathantneal.github.io/css-db/#css-color-modifying-colors) [![Build Status](https://travis-ci.org/postcss/postcss-color-function.svg)](https://travis-ci.org/postcss/postcss-color-function)
 
 > [PostCSS](https://github.com/postcss/postcss) plugin to transform [W3C CSS color function][specs] to more compatible CSS.
 
