@@ -10,3 +10,9 @@ body {
 
   border-color: color(#999 a(0.8)) color(#999 a(0.8));
 }
+
+.withAlpha {
+  color: color(black a(80%) contrast(99%));
+  background-color: color(red a(50%) shade(50%));
+  border-color: color(red a(80%) tint(50%));
+}
