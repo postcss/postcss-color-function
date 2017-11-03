@@ -1,3 +1,8 @@
+# 4.0.1 - 2017-11-03
+
+- Fixed: bug when using the `tint`, `shade`, and `contrast` adjusters along with the `alpha` adjuster
+([#33](https://github.com/postcss/postcss-color-function/pull/33) - @tylergaw)
+
 # 4.0.0 - 2017-05-15
 
 - Added: compatibility with postcss v6.x
@@ -8,7 +13,7 @@
 - Changed: send postcss warning when color function cannot be parsed instead of throwing
 ([#35](https://github.com/postcss/postcss-color-function/pull/35) - @drewbourne)
 - Changed: send a postcss message when color function contains a var()
-([#36](https://github.com/postcss/postcss-color-function/pull/36) - @drewbourne) 
+([#36](https://github.com/postcss/postcss-color-function/pull/36) - @drewbourne)
 
 # 2.0.1 - 2016-03-15
 

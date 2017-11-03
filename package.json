@@ -1,6 +1,6 @@
 {
   "name": "postcss-color-function",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "description": "PostCSS plugin to transform W3C CSS color function to more compatible CSS.",
   "keywords": [
     "css",
