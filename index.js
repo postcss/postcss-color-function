@@ -10,21 +10,21 @@ var helpers = require("postcss-message-helpers")
  * PostCSS plugin to transform color()
  */
 module.exports = postcss.plugin("postcss-color-function", function(opts) {
-  const options = Object.assign({
+  var options = Object.assign({
     mediaQueries: false
   }, opts);  
   
   return function(style, result) {
     style.walk(function transformDecl(node) {
-      const { type } = node;
-      let prop;
+      var type = node.type;
+      var prop;
 
       if (type === 'decl') prop = "value";
       if (type === 'atrule' && options.mediaQueries) prop = "params";
       
       if (!prop) return;
       
-      const value = node[prop];
+      var value = node[prop];
       if (!value || value.indexOf("color(") === -1) {
         return
       }
