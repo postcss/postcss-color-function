@@ -11,20 +11,20 @@ var helpers = require("postcss-message-helpers")
  */
 module.exports = postcss.plugin("postcss-color-function", function(opts) {
   var options = Object.assign({
-    mediaQueries: false
-  }, opts);  
+    mediaQueries: false,
+  }, opts)
   
   return function(style, result) {
     style.walk(function transformDecl(node) {
-      var type = node.type;
-      var prop;
+      var type = node.type
+      var prop
 
-      if (type === 'decl') prop = "value";
-      if (type === 'atrule' && options.mediaQueries) prop = "params";
+      if (type === "decl") prop = "value"
+      if (type === "atrule" && options.mediaQueries) prop = "params"
       
-      if (!prop) return;
+      if (!prop) return
       
-      var value = node[prop];
+      var value = node[prop]
       if (!value || value.indexOf("color(") === -1) {
         return
       }
