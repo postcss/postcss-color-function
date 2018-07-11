@@ -9,35 +9,48 @@ var helpers = require("postcss-message-helpers")
 /**
  * PostCSS plugin to transform color()
  */
-module.exports = postcss.plugin("postcss-color-function", function() {
+module.exports = postcss.plugin("postcss-color-function", function(opts) {
+  const options = Object.assign({
+    mediaQueries: false
+  }, opts);  
+  
   return function(style, result) {
-    style.walkDecls(function transformDecl(decl) {
-      if (!decl.value || decl.value.indexOf("color(") === -1) {
+    style.walk(function transformDecl(node) {
+      const { type } = node;
+      let prop;
+
+      if (type === 'decl') prop = "value";
+      if (type === 'atrule' && options.mediaQueries) prop = "params";
+      
+      if (!prop) return;
+      
+      const value = node[prop];
+      if (!value || value.indexOf("color(") === -1) {
         return
       }
 
-      if (decl.value.indexOf("var(") !== -1) {
+      if (value.indexOf("var(") !== -1) {
         result.messages.push({
           plugin: "postcss-color-function",
           type: "skipped-color-function-with-custom-property",
-          word: decl.value,
+          word: value,
           message:
             "Skipped color function with custom property `" +
-            decl.value +
+            value +
             "`",
         })
         return
       }
 
       try {
-        decl.value = helpers.try(function transformColorValue() {
-          return transformColor(decl.value)
-        }, decl.source)
+        node[prop] = helpers.try(function transformColorValue() {
+          return transformColor(value)
+        }, node.source)
       }
       catch (error) {
-        decl.warn(result, error.message, {
-          word: decl.value,
-          index: decl.index,
+        node.warn(result, error.message, {
+          word: value,
+          index: node.index,
         })
       }
     })
