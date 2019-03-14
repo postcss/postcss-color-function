@@ -1,6 +1,11 @@
-# postcss-color-function [![CSS Standard Status](https://jonathantneal.github.io/css-db/badge/css-color-modifying-colors.svg)](https://jonathantneal.github.io/css-db/#css-color-modifying-colors) [![Build Status](https://travis-ci.org/postcss/postcss-color-function.svg)](https://travis-ci.org/postcss/postcss-color-function)
+# postcss-color-function [![Build Status](https://travis-ci.org/postcss/postcss-color-function.svg)](https://travis-ci.org/postcss/postcss-color-function)
 
-> [PostCSS](https://github.com/postcss/postcss) plugin to transform [W3C CSS color function][specs] to more compatible CSS.
+> [PostCSS](https://github.com/postcss/postcss) plugin to transform CSS color function from editor draft of 'Color Module Level 4' specification to more compatible CSS.
+
+**⚠️ `color()` was changed to `color-mod()`. See [postcss-color-mod-function](https://github.com/jonathantneal/postcss-color-mod-function).**
+
+**⚠️ `color-mod()` has been removed from [Color Module Level 4 specification](https://www.w3.org/TR/css-color-4/#changes-from-20160705).**
+
 
 ## Installation
 
@@ -75,8 +80,6 @@ Notes:
 - can be used on every value on any property,
 - some values can use add/subtract/scale modifiers or a direct value.
 
-[Read the specs][specs] for more information.
-
 ### Examples
 
 ```css
@@ -119,5 +122,3 @@ color(red shade(20%))
 ## [Changelog](CHANGELOG.md)
 
 ## [License](LICENSE)
-
-[specs]: http://dev.w3.org/csswg/css-color/#modifying-colors
