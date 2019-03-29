@@ -6,11 +6,10 @@
 
 **⚠️ `color-mod()` has been removed from [Color Module Level 4 specification](https://www.w3.org/TR/css-color-4/#changes-from-20160705).**
 
-
 ## Installation
 
 ```console
-$ npm install postcss-color-function
+npm install postcss-color-function
 ```
 
 ## Usage
@@ -25,8 +24,10 @@ var colorFunction = require("postcss-color-function")
 var css = fs.readFileSync("input.css", "utf8")
 
 // process css
+// set preserveCustomProps to `false` by default `true`
+//for delete declarations with custom properties
 var output = postcss()
-  .use(colorFunction())
+  .use(colorFunction({preserveCustomProps: true}))
   .process(css)
   .css
 ```
