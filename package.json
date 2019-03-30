@@ -24,12 +24,13 @@
   },
   "devDependencies": {
     "eslint": "^3.19.0",
+    "faucet": "0.0.1",
     "npmpub": "^3.1.0",
-    "tape": "^3.0.0"
+    "tape": "^4.10.1"
   },
   "scripts": {
     "lint": "eslint *.js index.js ./test/",
-    "test": "npm run lint && tape test",
+    "test": "npm run lint && tape test | faucet",
     "release": "npmpub"
   }
 }

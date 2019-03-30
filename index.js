@@ -6,10 +6,16 @@ var parser = require("postcss-value-parser")
 var colorFn = require("css-color-function")
 var helpers = require("postcss-message-helpers")
 
+var defaultOptions = {
+  preserveCustomProps: true,
+}
+
 /**
  * PostCSS plugin to transform color()
  */
-module.exports = postcss.plugin("postcss-color-function", function() {
+module.exports = postcss.plugin("postcss-color-function", function(options) {
+  options = Object.assign({}, defaultOptions, options)
+
   return function(style, result) {
     style.walkDecls(function transformDecl(decl) {
       if (!decl.value || decl.value.indexOf("color(") === -1) {
@@ -17,6 +23,10 @@ module.exports = postcss.plugin("postcss-color-function", function() {
       }
 
       if (decl.value.indexOf("var(") !== -1) {
+        if (!options.preserveCustomProps) {
+          decl.remove()
+          return
+        }
         result.messages.push({
           plugin: "postcss-color-function",
           type: "skipped-color-function-with-custom-property",
@@ -27,7 +37,7 @@ module.exports = postcss.plugin("postcss-color-function", function() {
             "`",
         })
         return
-      }
+      } 
 
       try {
         decl.value = helpers.try(function transformColorValue() {

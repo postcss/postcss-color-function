@@ -20,7 +20,7 @@ function compareFixtures(t, name, msg, opts, postcssOpts) {
   var actual = postcss().use(plugin(opts))
     .process(read(postcssOpts.from), postcssOpts).css
   var expected = read(filename("fixtures/" + name + ".expected"))
-  fs.writeFile(filename("fixtures/" + name + ".actual"), actual)
+  fs.writeFileSync(filename("fixtures/" + name + ".actual"), actual)
   t.equal(actual, expected, msg)
 }
 
@@ -106,3 +106,41 @@ test("logs message when color() contains var() custom property", function(t) {
     t.end()
   })
 })
+
+test(
+  "test delete custom properties with option preserveCustomProps `false`", 
+  function(t) {
+    postcss(plugin({preserveCustomProps : false})).process(
+      read(filename("fixtures/delete-custom-properties"))
+    ).then(function(result) {
+      var expectedDeclaration = [{
+        prop: "background-color",
+        value: "rgb(255, 128, 128)",
+      }]
+      // check left rules in body after clear
+      var declNodes = result.root.nodes[0].nodes
+      t.equal(
+        declNodes.length,
+        expectedDeclaration.length,
+        "expected " + expectedDeclaration.length +
+        " declaration length but got " + declNodes.length
+      )
+
+      t.equal(
+        declNodes[0].prop,
+        expectedDeclaration[0].prop,
+        "expected declaration with "+ expectedDeclaration[0].prop +
+        " property but got " + declNodes[0].prop
+      )
+
+      t.equal(
+        declNodes[0].value,
+        expectedDeclaration[0].value,
+        "expected declaration with "+ expectedDeclaration[0].value +
+        " value but got " + declNodes[0].value
+      )
+
+      t.end()
+    })
+  }
+)
