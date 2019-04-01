@@ -1,8 +1,14 @@
 # postcss-color-function [![Build Status](https://travis-ci.org/postcss/postcss-color-function.svg)](https://travis-ci.org/postcss/postcss-color-function)
 
-> [PostCSS](https://github.com/postcss/postcss) plugin to transform CSS color function from editor draft of 'Color Module Level 4' specification to more compatible CSS.
+[PostCSS](https://github.com/postcss/postcss) plugin to transform CSS color function from editor draft of 'Color Module Level 4' specification to more compatible CSS.
+
+## Deprecated
 
 **⚠️ `color()` was changed to `color-mod()`. See [postcss-color-mod-function](https://github.com/jonathantneal/postcss-color-mod-function).**
+
+> There is a
+  [`color-mod`](https://github.com/jonathantneal/postcss-color-mod-function)
+  implementation.
 
 **⚠️ `color-mod()` has been removed from [Color Module Level 4 specification](https://www.w3.org/TR/css-color-4/#changes-from-20160705).**
 

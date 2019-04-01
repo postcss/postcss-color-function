@@ -1,3 +1,9 @@
+# 4.1.0 - 2019-04-01
+
+- Added: `preserveCustomProps` option to preserve custom properties
+- Updated: `postcss` to 6.0.23 (patch)
+- Updated: `postcss-value-parser` to 3.3.1 (patch)
+
 # 4.0.1 - 2017-11-03
 
 - Fixed: bug when using the `tint`, `shade`, and `contrast` adjusters along with the `alpha` adjuster
