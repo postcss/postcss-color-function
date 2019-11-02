@@ -23,7 +23,7 @@
     "postcss-value-parser": "^3.3.1"
   },
   "devDependencies": {
-    "eslint": "^3.19.0",
+    "eslint": "^6.6.0",
     "faucet": "0.0.1",
     "npmpub": "^3.1.0",
     "tape": "^4.10.1"
