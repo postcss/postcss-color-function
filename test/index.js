@@ -30,7 +30,7 @@ test("color()", function(t) {
 })
 
 test("logs warning when color() value cannot be parsed", function(t) {
-  postcss(plugin()).process(read(filename("fixtures/error")))
+  postcss(plugin()).process(read(filename("fixtures/error")), {from: undefined})
     .then(function(result) {
       var warnings = result.warnings()
       t.equals(warnings.length, 1, "expected only 1 warning")
@@ -61,7 +61,7 @@ test("logs warning when color() value cannot be parsed", function(t) {
 
 test("logs message when color() contains var() custom property", function(t) {
   postcss(plugin()).process(
-    read(filename("fixtures/color-with-custom-properties"))
+    read(filename("fixtures/color-with-custom-properties")), {from: undefined}
   ).then(function(result) {
     var expectedWords = [
       "color(var(--red))",
@@ -111,7 +111,8 @@ test(
   "test delete custom properties with option preserveCustomProps `false`", 
   function(t) {
     postcss(plugin({preserveCustomProps : false})).process(
-      read(filename("fixtures/delete-custom-properties"))
+      read(filename("fixtures/delete-custom-properties")),
+      {from: undefined}
     ).then(function(result) {
       var expectedDeclaration = [{
         prop: "background-color",
