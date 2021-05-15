@@ -1,7 +1,6 @@
 /**
  * Module dependencies.
  */
-var postcss = require("postcss")
 var parser = require("postcss-value-parser")
 var colorFn = require("css-color-function")
 var helpers = require("postcss-message-helpers")
@@ -13,11 +12,12 @@ var defaultOptions = {
 /**
  * PostCSS plugin to transform color()
  */
-module.exports = postcss.plugin("postcss-color-function", function(options) {
+module.exports = function(options) {
   options = Object.assign({}, defaultOptions, options)
 
-  return function(style, result) {
-    style.walkDecls(function transformDecl(decl) {
+  return {
+    postcssPlugin: "postcss-color-function",
+    Declaration(decl, {result}) {
       if (!decl.value || decl.value.indexOf("color(") === -1) {
         return
       }
@@ -50,9 +50,11 @@ module.exports = postcss.plugin("postcss-color-function", function(options) {
           index: decl.index,
         })
       }
-    })
+    },
   }
-})
+}
+
+module.exports.postcss = true
 
 /**
  * Transform color() to rgb()
